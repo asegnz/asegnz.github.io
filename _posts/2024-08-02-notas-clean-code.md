@@ -16,18 +16,17 @@ En este post voy a dejar todas mis notas que resumen las ideas importantes de Un
 1. En el mundo del desarrollo del software, el 80% de lo que hacemos es repararlo, es decir, mantenerlo.
 
 ### 1.1. Principios Lean
-
-* 1. **Seiri: (ordenado)**: convenir nombres, localización de las cosas
-* 2. **Seiton o tidyness (sistemático)**: allá por donde lo buscas es donde tiene que estar.
-* 3. **Seiso (cleaning)**: Borra comentarios y tira la basura que tengas en el escritorio
-* 4. **Seiketsu (estandarización)**: Cómo mantener el espacio de trabajo (workspace) limpio
-* 5. **Shutsuke (disciplina)**: Seguir las prácticas, voluntad para mejorar
+1. **Seiri: (ordenado)**: convenir nombres, localización de las cosas
+2. **Seiton o tidyness (sistemático)**: allá por donde lo buscas es donde tiene que estar.
+3. **Seiso (cleaning)**: Borra comentarios y tira la basura que tengas en el escritorio
+4. **Seiketsu (estandarización)**: Cómo mantener el espacio de trabajo (workspace) limpio
+5. **Shutsuke (disciplina)**: Seguir las prácticas, voluntad para mejorar
 
 ### 1.2 Notas esenciales
 
 * Existen dos acciones importantes para aprender *craftmanship:* tener conocimiento y trabajo duro
 * Hay que entender que el después implica nunca
-* El trabajo de un manager es controlar los hitos, el trabajo de un desarrollador es defender el código limpio
+* El trabajo de un manager es controlar los hitos, el trabajo de un desarrollador es defender el código limpio§
 
 ### 1.3 The Primal Comundrum
 
