@@ -301,76 +301,76 @@ En este post voy a dejar todas mis notas que resumen las ideas importantes de Un
 ## 17) Smells y heurísticas
 Este capítulo es una síntesis de todo lo que ya hemos hablado.
 * En Refactoring, Martin Fowler identifica varios "code smells". Basado en esa lista, tenemos una lista donde se clasifica cada code smell:
-** Comentarios:
-*** C1: Información inapropiada. @author, last-modified date, son cosas que no deberían aparecer en el código. Ya tenemos el control de versiones para eso.
-*** C2: Comentario obsoleto, viejo, irrelevante... Si te encuentras uno bórralo. Si no puedes, al menos actualízalo.
-*** C3: Comentario redundante. No hace falta explicarlo. Por ejemplo: los javadocs autogenerados.
-*** C4: Comentario pobre: utiliza buenas palabras y trata de que sea el mejor comentario escrito jamás.
-*** C5: Código comentado: Elimínalo. En el control de versiones vas a seguir teniéndolo
-** Entorno:
-*** E1: Para arrancar una aplicación deberías tener un comando que lo arranque y ya. No debería ser ir a buscar las bolas de dragón para que algo funcione.
-*** E2: De forma idéntica al anterior, deberías poder arrancar todos los tests unitarios e integrados de la aplicación.
-** Funciones/Métodos:
-*** F1: Demasiados argumentos: más de 3 argumentos no está aconsejado para funciones. Yo diría que más de dos ya empieza a oler. Lo ideal es 1 o ninguno.
-*** F2: Objetos de salida: la gente no se espera que los objetos cambien en lo que se devuelve, si no que si le aplicas algo a alguien, ese alguien debe ser el modificado, no el resultante.
-*** F3: Parámetros "flag": Indican que tu función va a hacer más de una cosa y se deberían evitar.
-*** F4: Funciones muertas: Funciones que nunca se llaman deben borrarse. Tu control de versiones siempre lo recordarán.
-** General:
-*** G1: Múltiples lenguajes de programación en un fichero: Por favor, no mezcles Java con XML salvo que no quede más remedio.
-*** G2: El caso de uso más común no está implementado: Siguiendo el principio de la mínima sorpresa, si tenemos un caso de uso para una clase de lo más habitual y no está implementado, el desarrollador que venga por detrás nos mirará con odio y empezará a enfangarse con todo, ya que habremos perdido su confianza.
-*** G3: Incorrecto comportamiento en casos límites: por favor, indica los casos límites de tu código y testéalos. No dejes nada a la intuición o a la suerte.
-*** G4: Apagar la seguridad: No quites los warnings ni apagues los tests. Aunque te convenzas de que lo harás luego, todos sabemos que no lo harás y lo sabes.
-*** G5: Duplicación: Dice que una repetición es una oportunidad perdida de abstracción. Yo no estoy totalmente de acuerdo, es posible que sea mejor duplicar y cambiar algo que abstraer e implementar erróneamente algo. Muchas veces el abstraer es un YAGNI de manual y no es tan necesario en la práctica. Eso sí, si somos puristas, Uncle Bob en este punto tiene razón. La mayoría de duplicaciones de código se pueden extraer a un método y el Ctrl + C y Ctrl + V se debería prohibir :)
-*** G6: Código a equivocado nivel de abstracción. Las constantes, variables o funciones de utilidad basadas en el detalle de implementación no deben ir en la clase base.
-*** G7: Las clases base dependen de sus clases derivadas. No hagas esto :)
-*** G8: Demasiada información: No te centres en crear una clase con muchos métodos a implementar por tus subclases. Los buenos desarrolladores aprenden a limitar qué se expone en interfaces, clases y módulos. Cuantos menos métodos tenga una clase, mejor será.
-*** G9: Código muerto. Elimínalo.
-*** G10: Separación vertical. Con esto se quiere comentar que una variable o función se debe declarar cercanamente a donde se declara. Sobre las variables estoy de acuerdo, pero sobre las funciones: existen los IDE's que te llevan directamente a esa función. Dónde la declares, tanto da.
-*** G11: Inconsistencia. Básicamente sigue el mismo estilo. Si a algo lo llamas Patata, luego no lo llames Boniato. Lenguaje ubícuo, por favor. Nombra bien los métodos, por ejemplo, delete, remove, etc..
-*** G12: Desorden. Usar un constructor por defecto en una clase donde es obligatorio rellenar los atributos es de muy relajaos. Haz tu código bien.
-*** G13: Acople artificial. Invierte tiempo para decidir dónde colocas funciiones, constantes o variables. No las mezcles en un sitio a mano y las dejes ahí.
-*** G14: La envidia de la feature: imagina que tienes un objeto Cuenta donde están tus movimientos bancarios. Luego tienes un método "calculadorDeNomina(Cuenta c)" que utiliza cosas del objeto cuenta y actualiza el saldo. Quizá el método calculadorDeNómina(..) deban estar dentro de la clase Cuenta, ya que accede a mucha información de dicho objeto. En este caso, el método calculadorDeNómina(..) tiene envidia del scope del objeto Cuenta. En castellano esta expresión no parece tener mucho sentido.
-*** G15: Parámetros selectores. Evita parámetros booleanos en los métodos.
-*** G16: Intenciones oscuras: magic numbers, notación hungara, y cosas raras oscurece las intenciones del autor. Evítalas.
-*** G17: Responsabilidad desplazada. A veces ponemos una constante donde no se debe o donde no es intuitivo para la mayoría de los mortales.
-*** G18: Métodos estáticos inapropiados: Usa no estáticos por defecto.  
-*** G19: Variables sin explicación: Las variables siempre deben tener sentido y un correcto nombrado.
-*** G20: Funciones deben decir lo que hacen.
-*** G21: Debes entender el algoritmo
-*** G22: Haz las dependencias lógicas que sean físicas. Es decir, aunque sean dos conceptos diferentes, si uno depende del otro, mantenlos cerca o en el mismo scope.
-*** G23: Usa polimorfismo a if/else o switch statements.
-*** G24: Sigue las convenciones estándar del lenguaje o framework que estés usando.
-*** G25: Sustituye los magic numbers a constantes con un nombre correcto.
-*** G26: Sé preciso: desarrolla lo que utilices y no mates moscas a cañonazos.
-*** G27: Es mejor una clase abstracta que un switch con enumerados chulis.
-*** G28: Trata de evitar sentencias con booleanos. Mejor extraelas a una función donde sea más legible lo que quiere decir (o lo que intenta decir) el if.
-*** G29: No pongas condicionales negados.
-*** G30: Las funciones sólo deben hacer una sóla cosa.
-*** G31: No esconder los acoples temporales. Si algo necesita estar acoplado, no lo hagas difícil de seguir.
-*** G32: No seas arbitrario cuando estructures tu código.
-*** G33: Encapsula casos límite en variables para permitir revisarlos.
-*** G34: Las funciones sólo pueden descender un nivel de abstración. Es decir, una función sólo puede invocar a objeto.metodo(), no a objeto.property.método()
-*** G35: Haz las variables de configuración configurables.
-*** G36: Parecido a la G34, evita saber de un módulo de forma transitiva. Si A sabe de B y B de C, A no debe saber de C ni llamarlo directamente. Esto se conoce como la ley de Demeter o escribir código tímido.
-** Java:
-*** J1: Evita las wildcard cuando importes bibliotecas. Solo confunden y aportan ruido cuando programas si te traes algo de más.
-*** J2: No heredes constantes. En lugar de usar herencia, usa un static import si no quieres nombrar la clase cada vez que la usas.
-*** J3: Si puedes usa Enums por encima de constantes.
-** Naming:
-*** N1: Elige nombres descriptivos.
-*** N2: Elige nombres descriptivos con el apropiado nivel de abstración.
-*** N3: Usa la nomenclatura estándar cuando sea posible.
-*** N4: Usa nombres no ambiguos.
-*** N5: Usa nombres largos para scopes que son largos.
-*** N6: Evita usar encodings como m_ o f. Son notaciones que no son interesantes.
-*** N7: Los nombres deben describir side effects.
-** Tests:
-*** T1: No hay suficientes tests.
-*** T2: Usa una herramienta de cobertura de tests.
-*** T3: No quites los tests triviales. Pueden no ser triviales para otra persona.
-*** T4: Los tests ignorados alimentan la incertidumbre. Se ignoraron porque ¿ya no aplican o porque se querían arreglar?
-*** T5: Testea los casos límites.
-*** T6: Cuando encuentres un bug, haz tests de la función que ha dado el bug, probablemente encuentres más errores.
-*** T7: Patrones de fallo pueden revelarte un problema.
-*** T8: Los patrones de cobertura de test te pueden revelar otro problema.
-*** T9: Los tests deben ser rápidos, ¿qué es eso de que tarden media hora?
+  * **Comentarios**:
+    * **C1**: Información inapropiada. @author, last-modified date, son cosas que no deberían aparecer en el código. Ya tenemos el control de versiones para eso.
+    * **C2**: Comentario obsoleto, viejo, irrelevante... Si te encuentras uno bórralo. Si no puedes, al menos actualízalo.
+    * **C3**: Comentario redundante. No hace falta explicarlo. Por ejemplo: los javadocs autogenerados.
+    * **C4**: Comentario pobre: utiliza buenas palabras y trata de que sea el mejor comentario escrito jamás.
+    * **C5**: Código comentado: Elimínalo. En el control de versiones vas a seguir teniéndolo
+  * **Entorno**:
+    * **E1**: Para arrancar una aplicación deberías tener un comando que lo arranque y ya. No debería ser ir a buscar las bolas de dragón para que algo funcione.
+    * **E2**: De forma idéntica al anterior, deberías poder arrancar todos los tests unitarios e integrados de la aplicación.
+  * Funciones/Métodos:
+    * **F1**: Demasiados argumentos: más de 3 argumentos no está aconsejado para funciones. Yo diría que más de dos ya empieza a oler. Lo ideal es 1 o ninguno.
+    * **F2**: Objetos de salida: la gente no se espera que los objetos cambien en lo que se devuelve, si no que si le aplicas algo a alguien, ese alguien debe ser el modificado, no el resultante.
+    * **F3**: Parámetros "flag": Indican que tu función va a hacer más de una cosa y se deberían evitar.
+    * **F4**: Funciones muertas: Funciones que nunca se llaman deben borrarse. Tu control de versiones siempre lo recordarán.
+  * General:
+    * **G1**: Múltiples lenguajes de programación en un fichero: Por favor, no mezcles Java con XML salvo que no quede más remedio.
+    * **G2**: El caso de uso más común no está implementado: Siguiendo el principio de la mínima sorpresa, si tenemos un caso de uso para una clase de lo más habitual y no está implementado, el desarrollador que venga por detrás nos mirará con odio y empezará a enfangarse con todo, ya que habremos perdido su confianza.
+    * **G3**: Incorrecto comportamiento en casos límites: por favor, indica los casos límites de tu código y testéalos. No dejes nada a la intuición o a la suerte.
+    * **G4**: Apagar la seguridad: No quites los warnings ni apagues los tests. Aunque te convenzas de que lo harás luego, todos sabemos que no lo harás y lo sabes.
+    * **G5**: Duplicación: Dice que una repetición es una oportunidad perdida de abstracción. Yo no estoy totalmente de acuerdo, es posible que sea mejor duplicar y cambiar algo que abstraer e implementar erróneamente algo. Muchas veces el abstraer es un YAGNI de manual y no es tan necesario en la práctica. Eso sí, si somos puristas, Uncle Bob en este punto tiene razón. La mayoría de duplicaciones de código se pueden extraer a un método y el Ctrl + C y Ctrl + V se debería prohibir :)
+    * **G6**: Código a equivocado nivel de abstracción. Las constantes, variables o funciones de utilidad basadas en el detalle de implementación no deben ir en la clase base.
+    * **G7**: Las clases base dependen de sus clases derivadas. No hagas esto :)
+    * **G8**: Demasiada información: No te centres en crear una clase con muchos métodos a implementar por tus subclases. Los buenos desarrolladores aprenden a limitar qué se expone en interfaces, clases y módulos. Cuantos menos métodos tenga una clase, mejor será.
+    * **G9**: Código muerto. Elimínalo.
+    * **G10**: Separación vertical. Con esto se quiere comentar que una variable o función se debe declarar cercanamente a donde se declara. Sobre las variables estoy de acuerdo, pero sobre las funciones: existen los IDE's que te llevan directamente a esa función. Dónde la declares, tanto da.
+    * **G11**: Inconsistencia. Básicamente sigue el mismo estilo. Si a algo lo llamas Patata, luego no lo llames Boniato. Lenguaje ubícuo, por favor. Nombra bien los métodos, por ejemplo, delete, remove, etc..
+    * **G12**: Desorden. Usar un constructor por defecto en una clase donde es obligatorio rellenar los atributos es de muy relajaos. Haz tu código bien.
+    * **G13**: Acople artificial. Invierte tiempo para decidir dónde colocas funciiones, constantes o variables. No las mezcles en un sitio a mano y las dejes ahí.
+    * **G14**: La envidia de la feature: imagina que tienes un objeto Cuenta donde están tus movimientos bancarios. Luego tienes un método "calculadorDeNomina(Cuenta c)" que utiliza cosas del objeto cuenta y actualiza el saldo. Quizá el método calculadorDeNómina(..) deban estar dentro de la clase Cuenta, ya que accede a mucha información de dicho objeto. En este caso, el método calculadorDeNómina(..) tiene envidia del scope del objeto Cuenta. En castellano esta expresión no parece tener mucho sentido.
+    * **G15**: Parámetros selectores. Evita parámetros booleanos en los métodos.
+    * **G16**: Intenciones oscuras: magic numbers, notación húngara, y cosas raras oscurece las intenciones del autor. Evítalas.
+    * **G17**: Responsabilidad desplazada. A veces ponemos una constante donde no se debe o donde no es intuitivo para la mayoría de los mortales.
+    * **G18**: Métodos estáticos inapropiados: Usa no estáticos por defecto.  
+    * **G19**: Variables sin explicación: Las variables siempre deben tener sentido y un correcto nombrado.
+    * **G20**: Funciones deben decir lo que hacen.
+    * **G21**: Debes entender el algoritmo
+    * **G22**: Haz las dependencias lógicas que sean físicas. Es decir, aunque sean dos conceptos diferentes, si uno depende del otro, mantenlos cerca o en el mismo scope.
+    * **G23**: Usa polimorfismo a if/else o switch statements.
+    * **G24**: Sigue las convenciones estándar del lenguaje o framework que estés usando.
+    * **G25**: Sustituye los magic numbers a constantes con un nombre correcto.
+    * **G26**: Sé preciso: desarrolla lo que utilices y no mates moscas a cañonazos.
+    * **G27**: Es mejor una clase abstracta que un switch con enumerados chulis.
+    * **G28**: Trata de evitar sentencias con booleanos. Mejor extraelas a una función donde sea más legible lo que quiere decir (o lo que intenta decir) el if.
+    * **G29**: No pongas condicionales negados.
+    * **G30**: Las funciones sólo deben hacer una sóla cosa.
+    * **G31**: No esconder los acoples temporales. Si algo necesita estar acoplado, no lo hagas difícil de seguir.
+    * **G32**: No seas arbitrario cuando estructures tu código.
+    * **G33**: Encapsula casos límite en variables para permitir revisarlos.
+    * **G34**: Las funciones sólo pueden descender un nivel de abstración. Es decir, una función sólo puede invocar a objeto.metodo(), no a objeto.property.método()
+    * **G35**: Haz las variables de configuración configurables.
+    * **G36**: Parecido a la G34, evita saber de un módulo de forma transitiva. Si A sabe de B y B de C, A no debe saber de C ni llamarlo directamente. Esto se conoce como la ley de Demeter o escribir código tímido.
+  * **Java**:
+    * **J1**: Evita las wildcard cuando importes bibliotecas. Solo confunden y aportan ruido cuando programas si te traes algo de más.
+    * **J2**: No heredes constantes. En lugar de usar herencia, usa un static import si no quieres nombrar la clase cada vez que la usas.
+    * **J3**: Si puedes usa Enums por encima de constantes.
+  * **Naming**:
+    * **N1**: Elige nombres descriptivos.
+    * **N2**: Elige nombres descriptivos con el apropiado nivel de abstración.
+    * **N3**: Usa la nomenclatura estándar cuando sea posible.
+    * **N4**: Usa nombres no ambiguos.
+    * **N5**: Usa nombres largos para scopes que son largos.
+    * **N6**: Evita usar encodings como m_ o f. Son notaciones que no son interesantes.
+    * **N7**: Los nombres deben describir side effects.
+  * **Tests**:
+    * **T1**: No hay suficientes tests.
+    * **T2**: Usa una herramienta de cobertura de tests.
+    * **T3**: No quites los tests triviales. Pueden no ser triviales para otra persona.
+    * **T4**: Los tests ignorados alimentan la incertidumbre. Se ignoraron porque ¿ya no aplican o porque se querían arreglar?
+    * **T5**: Testea los casos límites.
+    * **T6**: Cuando encuentres un bug, haz tests de la función que ha dado el bug, probablemente encuentres más errores.
+    * **T7**: Patrones de fallo pueden revelarte un problema.
+    * **T8**: Los patrones de cobertura de test te pueden revelar otro problema.
+    * **T9**: Los tests deben ser rápidos, ¿qué es eso de que tarden media hora?
