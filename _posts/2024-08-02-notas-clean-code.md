@@ -229,9 +229,9 @@ En este post voy a dejar todas mis notas que resumen las ideas importantes de Un
 * Mockea objetos de construcción si no son el sujeto sobre el que haces el test (sut o Subject Under Test).
 * La aplicación no debe ser consciente de cómo se construye. Sabe que se hace apropiadamente, pero ya está.
 * Es un mito que podamos tener sistemas "correctas" desde el primer momento. Debemos mejorar éstos mediante user stories, refactorizar y permitir el uso de historias de usuario mañana.
-  ** Esta es la esencia de iterativo e incremental, del Agile.
-  ** Siguiendo TDD, refactorizando y con clean code podemos realizar todo esto a bajo nivel en el software.  
-  ** Pero, ¿qué pasa con los sistemas? Pues que todo se puede mejorar y ampliar si separamos los conceptos. Hay que saber delegar, incluso en el software.
+  * Esta es la esencia de iterativo e incremental, del Agile.
+  * Siguiendo TDD, refactorizando y con clean code podemos realizar todo esto a bajo nivel en el software.  
+  * Pero, ¿qué pasa con los sistemas? Pues que todo se puede mejorar y ampliar si separamos los conceptos. Hay que saber delegar, incluso en el software.
 * Separar el dominio de la persistencia te permite testar unitariamente de una forma más apropiada. Si puedes ignorar cualquier framework para construir tu negocio, éste no se verá afectado por sus cambios.
 * Un óptimo sistema de arquitectura consiste en modularizar y separar los dominios: inputs, persistencia, negocio, eventos... son capas que debemos modularizar.
 * Sabemos que es mejor dar responsabilidades a las personas más cualificadas, por tanto: es mejor posponer las decisiones hasta el último momento posible. De esta manera, podremos elegir la mejor decisión con la información más completa.
@@ -242,16 +242,16 @@ En este post voy a dejar todas mis notas que resumen las ideas importantes de Un
 ## 12) Emergencias... o mejor dicho fuegos?
 
 * Un diseño es simple si (en orden de importancia):
-  ** Ejecuta todos los tests.
-  ** No contiene duplicación de código.
-  ** Expresa la intención del programador.
-  ** Minimiza el número de clases y métodos.
+  * Ejecuta todos los tests.
+  * No contiene duplicación de código.
+  * Expresa la intención del programador.
+  * Minimiza el número de clases y métodos.
 * Un sistema que no se puede probar no debería ser desplegado nunca.
 * Tener tests te permite refactorizar.
 * La duplicación es el principal enemigo de un buen sistema de diseño.
 * Lo más claro que hagas el código implica que el resto tardará menos en entenderlo:
-  ** Elige bien los nombres, clases pequeñas y evita que el resto se sorprenda cuando vean lo que hacen.
-  ** Agrega patrones como Command o Visitor a tus clases para que se sepa exactamente qué hacen.
+  * Elige bien los nombres, clases pequeñas y evita que el resto se sorprenda cuando vean lo que hacen.
+  * Agrega patrones como Command o Visitor a tus clases para que se sepa exactamente qué hacen.
 * Tests unitarios bien escritos también ayudan a expresar la intención del lenguaje y sirve como una autodocumentación de qué tiene que hacer la clase que estás testeando.
 * Lo más importante es que lo intentes: trata de no irte a solucionar otro problema, hazlo legible, entendible y expresivo.
 * Sobre las mínimas clases y métodos: imagínate una arquitectura o standard que te obliga a crear una interfaz por cada clase. Elige ser pragmático.
@@ -262,34 +262,34 @@ En este post voy a dejar todas mis notas que resumen las ideas importantes de Un
 * El diseño puede cambiar para abordar una solución concurrente.
 * La concurrencia provoca más trabajo, tanto a nivel de rendimiento como de escribir código
 * Corregir problemas concurrente es complejo, incluso para problemas simples.
-** Algunos bugs pueden no reproducirse.
+  * Algunos bugs pueden no reproducirse.
 * La concurrencia requiere un cambio fundamental en la estrategia de diseño.
 * Nos podemos defender de la concurrencia mediante los siguientes principios:
-** Single Responsibility Principle:
-*** El código concurrente debe tener sus propios desafíos, estar localizado y tener su propio ciclo de vida de desarrollo.
-**** Mantén lejos tu código concurrente de código no concurrente.
-** Limita el alcance de los datos:
-*** La solución es poner un synchronized en las secciones críticas.
-*** Reduce el número de sitios donde pones un synchronized. Si es más de uno y se te olvida vas a provocar un problema de concurrencia de seguro.
-*** Encapsula los datos y evita que otros accedan y los modifiquen.
-** Copia los datos:
-*** Y trátalos como sólo lectura.
-*** Esto puede generar una sobrecarga en el recolector de basura y en el tiempo de creación: merece la pena si te ahorras un problema concurrente.
-*** Si vas a modificar datos, hazlo en un solo hilo.
-** Los hilos deben ser tan independientes como sean posibles
-*** Vamos que no tengas variables globales compartidas por varios hilos. Es algo de primero de carrera.
-** Conoce tu lenguaje:
-*** Usa clases thread-safe como colecciones o librerías.
-** Conoce los modelos de ejecución de los hilos:
-*** Bound Resources: Recursos con tamaño ajustado que se usan en un entorno concurrente: conexiones a bases de datos, buffers de lectura y escritura, etc...
-*** Mutual Exclusion: Sólo un hilo puede acceder al dato compartido al mismo tiempo.
-*** Starvation: Si dejas a los hilos que se ejecutan rápido que se lancen los primeros, puede que lleguen los "lentos" a no ejecutarse nunca.
-*** Deadlock: Cuando hay 2 hilos esperando el uno por el otro para terminar. También lo que se conoce como interbloqueo.
-*** Livelock: Cuando un hilo trata de entrar en el lock pero ningún Thread le deja durante un tiempo largo.
+  * Single Responsibility Principle:
+    * El código concurrente debe tener sus propios desafíos, estar localizado y tener su propio ciclo de vida de desarrollo.
+      * Mantén lejos tu código concurrente de código no concurrente.
+  * Limita el alcance de los datos:
+    * La solución es poner un synchronized en las secciones críticas.
+      * Reduce el número de sitios donde pones un synchronized. Si es más de uno y se te olvida vas a provocar un problema de concurrencia de seguro.
+      * Encapsula los datos y evita que otros accedan y los modifiquen.
+  * Copia los datos:
+    * Y trátalos como sólo lectura.
+    * Esto puede generar una sobrecarga en el recolector de basura y en el tiempo de creación: merece la pena si te ahorras un problema concurrente.
+    * Si vas a modificar datos, hazlo en un solo hilo.
+    * Los hilos deben ser tan independientes como sean posibles
+    * Vamos que no tengas variables globales compartidas por varios hilos. Es algo de primero de carrera.
+  * Conoce tu lenguaje:
+    * Usa clases thread-safe como colecciones o librerías.
+ * Conoce los modelos de ejecución de los hilos:
+   * **Bound Resources**: Recursos con tamaño ajustado que se usan en un entorno concurrente: conexiones a bases de datos, buffers de lectura y escritura, etc...
+   * **Mutual Exclusion**: Sólo un hilo puede acceder al dato compartido al mismo tiempo.
+   * **Starvation**: Si dejas a los hilos que se ejecutan rápido que se lancen los primeros, puede que lleguen los "lentos" a no ejecutarse nunca.
+   * **Deadlock**: Cuando hay 2 hilos esperando el uno por el otro para terminar. También lo que se conoce como interbloqueo.
+   * **Livelock**: Cuando un hilo trata de entrar en el lock pero ningún Thread le deja durante un tiempo largo.
 * Mantén los synchronized pequeños:
-*  Cada synchronized implica un bloqueo para garantizar que solamente un hilo puede pasar por ahí a la vez.
+  * Cada synchronized implica un bloqueo para garantizar que solamente un hilo puede pasar por ahí a la vez.
 * Testea el código susceptible a ser concurrente:
-** Si algún test falla porque en alguna secuencia algo no fue bien, revisa bien qué ha pasado. No lo ignores.
+  * Si algún test falla porque en alguna secuencia algo no fue bien, revisa bien qué ha pasado. No lo ignores.
 * Rompe tu sistema y separa las clases que son conscientes de la concurrencia de las que no lo son.
 
 ## 14) Refinamientos del código
