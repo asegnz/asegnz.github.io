@@ -1,28 +1,28 @@
 ---
 layout: post
-title: "Calcula tus consultas a ChatGPT"
+title: "Calcula el coste de tus consultas a ChatGPT"
 date: "2024-11-11 00:00:00 +0100"
 categories: chatgpt tokens
 ---
 
-En este tutorial te enseñaré un ejemplo de cómo se pueden tokenizar las consultas que hacemos a ChatGPT para que sepamos lo que nos está costando cada interacción.
+En este tutorial te enseñaré un ejemplo de cómo se pueden tokenizar las consultas que hacemos a [ChatGPT](https://chatgpt.com/) para que sepamos lo que nos está costando cada interacción.
 
-# Tutorial Tokens Openai
+# Calcula el coste de tus consultas a ChatGPT
 
 ## 1. Introducción
 
-En los días en los que vivimos es fácil encontrarnos con interacciones con el ChatGPT de OpenAI. Ya sea para preguntarle cosas que no sabemos o cualquier cosa que se nos ocurra. Creo que no hace falta introducir qué es, pero os daré una breve pincelada.
+En los días en los que vivimos es fácil encontrarnos con interacciones con el [ChatGPT](https://chatgpt.com/) de [OpenAI](https://openai.com/). Ya sea para preguntarle cosas que no sabemos o cualquier cosa que se nos ocurra. Creo que no hace falta introducir qué es, pero os daré una breve pincelada.
 
 [OpenAI](https://openai.com/) es una organización que investiga y desarrolla inteligencia artificial para que beneficie a toda la humanidad. Uno de los productos más conocidos es [ChatGPT](https://chatgpt.com/), un modelo de lenguaje basado en IA que genera respuestas a tus preguntas, como si de otra persona se tratase.
 
-Por otro lado, en este tutorial nos vamos a enfocar en el modelo GPT-4, ya que es el más grande y preciso que todos los modelos que le preceden, pudiendo manejar conversaciones complejas y respuestas más detalladas. Si queremos una respuesta fiable, pero elaborada, utilizaremos este modelo. Sin embargo, si queremos un modelo más barato, no tan fiable pero rápido, podemos usar el modelo GPT-4 Mini.
+Por otro lado, en este tutorial nos vamos a enfocar en el modelo [GPT-4](https://www.xataka.com/basics/gpt-4-que-como-funciona-como-usarlo-que-puedes-hacer-este-modelo-lenguaje-inteligencia-artificial), ya que es el más grande y preciso que todos los modelos que le preceden, pudiendo manejar conversaciones complejas y respuestas más detalladas. Si queremos una respuesta fiable, pero elaborada, utilizaremos este modelo. Sin embargo, si queremos un modelo más barato, no tan fiable pero rápido, podemos usar el modelo GPT-4 Mini.
 
-Los "tokens" son fragmentos de texto con los que el modelo trabaja. Pueden ser palabras, partes de palabras, intenciones, etc... Cuantos más tokens se usan para preguntarle (input) algo a ChatGPT, más espacio ocupa y más recursos consume. También hay que tener en cuenta que ChatGPT nos responde (output) con tokens, por tanto, también nos afecta al espacio y recursos que consume.
+Los *tokens* son fragmentos de texto con los que el modelo trabaja. Pueden ser palabras, partes de palabras, intenciones, etc... Cuantos más *tokens* se usan para preguntarle (input) algo a ChatGPT, más espacio ocupa y más recursos consume. También hay que tener en cuenta que ChatGPT nos responde (output) con *tokens*, por tanto, también nos afecta al espacio y recursos que consume.
 
-Los "tokens" son la unidad de facturación de OpenAI, por tanto, es bueno controlar cuántos usamos en cada momento para intentar buscar la eficiencia cuando trabajemos con ChatGPT. Sin ir más lejos, a día de hoy estos son [los precios](https://openai.com/api/pricing/) de los tokens para los modelos GPT-4 y GPT-4 mini de OpenAI:
+Los *tokens* son la unidad de facturación de OpenAI, por tanto, es bueno controlar cuántos usamos en cada momento para intentar buscar la eficiencia cuando trabajemos con ChatGPT. Sin ir más lejos, a día de hoy estos son [los precios](https://openai.com/api/pricing/) de los *tokens* para los modelos GPT-4 y GPT-4 mini de OpenAI:
 
-- GPT-4 tiene un costo de 2.5 dólares por cada 1 millón de tokens de entrada (input) y 10 dólares por cada millón de tokens de salida (output).
-- GPT-4 mini es más económico, por 0.15 dólares por cada millón de tokens de entrada (input) y 0.60 dólares por cada millón de tokens de salida (output)
+- GPT-4 tiene un costo de 2.5 dólares por cada 1 millón de *tokens* de entrada (input) y 10 dólares por cada millón de *tokens* de salida (output).
+- GPT-4 mini es más económico, por 0.15 dólares por cada millón de *tokens* de entrada (input) y 0.60 dólares por cada millón de *tokens* de salida (output)
 
 ## 2. Entorno
 
@@ -144,8 +144,8 @@ El tiempo que ha tardado en convertir prompt tokens ha sido de  0.44226646423339
 
 Se ha tardado 442 nanosegundos en ejecutar esta conversión. Las 69 palabras han sido traducidas en 87 tokens.
 
-Antes de seguir con la otra biblioteca, vemos que tenemos una lista de tokens en integer, pero, ¿esto realmente qué es?
-Podemos convertir a texto estos prompt tokens para saber exactamente qué es lo que está guardando en estos números.
+Antes de seguir con la otra biblioteca, vemos que tenemos una lista de *tokens* en integer, pero, ¿esto realmente qué es?
+Podemos convertir a texto estos prompt *tokens* para saber exactamente qué es lo que está guardando en estos números.
 
 Vamos a crear otro script de python que he nombrado como **openai-tokens-detail.py**
 
@@ -173,13 +173,13 @@ De nuevo, ejecutamos:
 [b'Lorem', b' ipsum', b' dolor', b' sit', b' amet', b',', b' consectetur', b' adipiscing', b' elit', b',', b' sed', b' do', b' eiusmod', b' tempor', b' incididunt', b' ut', b' labore', b' et', b' dolore', b' magna', b' aliqua', b'.', b' Ut', b' enim', b' ad', b' minim', b' veniam', b',', b' quis', b' nost', b'rud', b' exercitation', b' ullam', b'co', b' laboris', b' nisi', b' ut', b' aliqu', b'ip', b' ex', b' ea', b' commodo', b' consequat', b'.', b' Duis', b' aute', b' ir', b'ure', b' dolor', b' in', b' reprehenderit', b' in', b' voluptate', b' velit', b' esse', b' c', b'illum', b' dolore', b' eu', b' fugiat', b' nulla', b' pariatur', b'.', b' Ex', b'cepteur', b' sint', b' occaec', b'at', b' cupid', b'atat', b' non', b' pro', b'ident', b',', b' sunt', b' in', b' culpa', b' qui', b' officia', b' deserunt', b' moll', b'it', b' anim', b' id', b' est', b' laborum', b'.']
 ```
 
-Como se puede observar, delante de cada literal tenemos una _b_ que significa que todo texto detrás es un **bytearray**. Con un texto tan largo no podemos apreciar a simple vista cómo se traduce el texto en tokens. Vamos con un ejemplo más cortito:
+Como se puede observar, delante de cada literal tenemos una _b_ que significa que todo texto detrás es un **bytearray**. Con un texto tan largo no podemos apreciar a simple vista cómo se traduce el texto en *tokens*. Vamos con un ejemplo más cortito:
 
 El perro corre rápido y el gato corre lento.
 [4422, 96439, **14025**, 41693, 342, 650, 99767, **14025**, 120905, 13]
 [b'El', b' perro', **b' corre'**, b' r\xc3\xa1pido', b' y', b' el', b' gato', **b' corre'**, b' lento', b'.']
 
-Vemos que se reutilizan las expresiones exactas como en el caso de "corre" y el propio "." tiene un token. Nos invita a pensar que **siempre que convirtamos texto, va a haber más tokens que palabras.** Veamos otro ejemplo:
+Vemos que se reutilizan las expresiones exactas como en el caso de "corre" y el propio "." tiene un *token*. Nos invita a pensar que **siempre que convirtamos texto, va a haber más tokens que palabras.** Veamos otro ejemplo:
 
 el perro corre, el perro juega, el perro duerme.
 [296, 96439, 14025, 11, 650, 96439, 145144, 11, 650, 96439, 116318, 1047, 13]
@@ -207,7 +207,7 @@ Para añadir la biblioteca [jtokkit](https://github.com/knuddelsgmbh/jtokkit) so
 </dependency>
 ```
 
-La función de codificación en tokens se nos quedaría así:
+La función de codificación en *tokens* se nos quedaría así:
 
 ```java
 import com.knuddels.jtokkit.Encodings;
@@ -259,5 +259,5 @@ En esta consola podemos introducir exactamente la misma consulta de prueba con l
 
 # 5. Conclusiones
 
-Aunque este ejercicio representa una prueba de concepto en el uso de la librería de cálculo de tokens, su aplicabilidad potencial es notable en diversas circunstancias. La capacidad de medir de manera precisa el consumo de tokens constituye un pilar fundamental para la optimización de recursos. Este enfoque no solo permite reformular las consultas a ChatGPT para reducir el gasto en tokens, sino también facilita una evaluación detallada del coste asociado a cada interacción. Así, es posible establecer tarifas ajustadas y mejorar la eficiencia en los procesos de negocio, maximizando el valor obtenido a partir de cada inversión en el uso de modelos de lenguaje.
+Aunque este ejercicio representa una prueba de concepto en el uso de la librería de cálculo de *tokens*, su aplicabilidad potencial es notable en diversas circunstancias. La capacidad de medir de manera precisa el consumo de *tokens* constituye un pilar fundamental para la optimización de recursos. Este enfoque no solo permite reformular las consultas a ChatGPT para reducir el gasto en *tokens*, sino también facilita una evaluación detallada del coste asociado a cada interacción. Así, es posible establecer tarifas ajustadas y mejorar la eficiencia en los procesos de negocio, maximizando el valor obtenido a partir de cada inversión en el uso de modelos de lenguaje.
 
