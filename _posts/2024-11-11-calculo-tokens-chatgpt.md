@@ -48,40 +48,40 @@ Esta librería está en [Python](https://www.python.org/), por lo que vamos a us
 Actualizamos brew a la última versión.
 
 ```bash
-> brew upgrade
+brew upgrade
 ```
 
 Instalamos el gestor de versiones de python.
 
 ```bash
-> brew install pyenv
+brew install pyenv
 ```
 
 Elegimos la versión 3.13 de Python. Hemos elegido esta porque es la más actual,
 
 ```bash
-> pyenv install 3.13
+pyenv install 3.13
 ```
 
 Verificamos que tenemos python instalado y la versión que hemos elegido:
 
 ```bash
-> python --version
+python --version
 Python 3.13.0
 ```
 
 Creamos un entorno de pruebas en python para instalar la biblioteca de tiktoken:
 
 ```bash
-> python3 -m venv ~/my_env
-> source ~/my_env/bin/activate
-> pip install tiktoken
+python3 -m venv ~/my_env
+source ~/my_env/bin/activate
+pip install tiktoken
 ```
 
 Vamos a generar un fichero que voy a llamar openai-tokens.py:
 
 ```bash
-> touch openai-tokens.py
+touch openai-tokens.py
 ```
 
 ### 3.3. Jugando con tiktoken
@@ -106,7 +106,7 @@ print(tokens)
 Y lo ejecutamos:
 
 ```bash
-> python openai-tokens.py
+python openai-tokens.py
 Generando tokens para el siguiente texto:
  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 [61495, 38714, 25840, 2353, 36204, 11, 54472, 91785, 45688, 11, 10412, 621, 160226, 14725, 173578, 4518, 110546, 859, 79682, 78404, 151394, 13, 21952, 51474, 687, 23874, 126377, 11, 39559, 15647, 73375, 138821, 99386, 1191, 199011, 58560, 4518, 51155, 488, 513, 11235, 127896, 131925, 13, 121159, 185481, 3288, 627, 25840, 306, 147652, 306, 145757, 82872, 15368, 274, 168333, 79682, 5658, 150234, 64611, 150207, 13, 1771, 185000, 29021, 171447, 266, 118278, 55268, 2893, 440, 2477, 11, 24871, 306, 62745, 2780, 143411, 152505, 76322, 278, 5727, 1211, 893, 152097, 13]
@@ -135,14 +135,14 @@ print("El tiempo que ha tardado en convertir prompt tokens ha sido de ", tiempo)
 Ejecutamos otra vez y ya lo tenemos:
 
 ```
-> python openai-tokens.py
+python openai-tokens.py
 Generando prompt tokens para el siguiente texto:
  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 [61495, 38714, 25840, 2353, 36204, 11, 54472, 91785, 45688, 11, 10412, 621, 160226, 14725, 173578, 4518, 110546, 859, 79682, 78404, 151394, 13, 21952, 51474, 687, 23874, 126377, 11, 39559, 15647, 73375, 138821, 99386, 1191, 199011, 58560, 4518, 51155, 488, 513, 11235, 127896, 131925, 13, 121159, 185481, 3288, 627, 25840, 306, 147652, 306, 145757, 82872, 15368, 274, 168333, 79682, 5658, 150234, 64611, 150207, 13, 1771, 185000, 29021, 171447, 266, 118278, 55268, 2893, 440, 2477, 11, 24871, 306, 62745, 2780, 143411, 152505, 76322, 278, 5727, 1211, 893, 152097, 13]
 El tiempo que ha tardado en convertir prompt tokens ha sido de  0.44226646423339844
 ```
 
-Se ha tardado 442 nanosegundos en ejecutar esta conversión. Las 69 palabras han sido traducidas en 87 tokens.
+Se ha tardado 0,442 milisegundos en ejecutar esta conversión. Las 69 palabras han sido traducidas en 87 tokens.
 
 Antes de seguir con la otra biblioteca, vemos que tenemos una lista de *tokens* en integer, pero, ¿esto realmente qué es?
 Podemos convertir a texto estos prompt *tokens* para saber exactamente qué es lo que está guardando en estos números.
@@ -150,7 +150,7 @@ Podemos convertir a texto estos prompt *tokens* para saber exactamente qué es l
 Vamos a crear otro script de python que he nombrado como **openai-tokens-detail.py**
 
 ```bash
-> touch openai-tokens-detail.py
+touch openai-tokens-detail.py
 ```
 
 Ahora vamos a preguntar qué significa cada uno de estos números enteros con el siguiente código:
@@ -169,7 +169,7 @@ print(tokens)
 De nuevo, ejecutamos:
 
 ```bash
-> python openai-tokens-detail.py
+python openai-tokens-detail.py
 [b'Lorem', b' ipsum', b' dolor', b' sit', b' amet', b',', b' consectetur', b' adipiscing', b' elit', b',', b' sed', b' do', b' eiusmod', b' tempor', b' incididunt', b' ut', b' labore', b' et', b' dolore', b' magna', b' aliqua', b'.', b' Ut', b' enim', b' ad', b' minim', b' veniam', b',', b' quis', b' nost', b'rud', b' exercitation', b' ullam', b'co', b' laboris', b' nisi', b' ut', b' aliqu', b'ip', b' ex', b' ea', b' commodo', b' consequat', b'.', b' Duis', b' aute', b' ir', b'ure', b' dolor', b' in', b' reprehenderit', b' in', b' voluptate', b' velit', b' esse', b' c', b'illum', b' dolore', b' eu', b' fugiat', b' nulla', b' pariatur', b'.', b' Ex', b'cepteur', b' sint', b' occaec', b'at', b' cupid', b'atat', b' non', b' pro', b'ident', b',', b' sunt', b' in', b' culpa', b' qui', b' officia', b' deserunt', b' moll', b'it', b' anim', b' id', b' est', b' laborum', b'.']
 ```
 
@@ -225,7 +225,10 @@ import com.knuddels.jtokkit.api.IntArrayList;
 private int numeroTokens(String consulta) {
     EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
     Encoding enc = registry.getEncoding(EncodingType.O200K_BASE); //o200k_base
+    long inicio = System.nanoTime();
     IntArrayList encoded = enc.encode(consulta);
+    long fin = System.nanoTime();
+    System.out.println("Esta conversión ha tardado "+ (fin - inicio) +" nanosegundos");
     System.out.println("La consulta '" + consulta + "' se ha codificado en " + encoded + " y son " + encoded.size() + " tokens.");
     return encoded.size();
 }
@@ -253,13 +256,15 @@ Seleccione una opción:
 4. Cambiar coste por millón de output tokens (10 $)
 5. Salir
 Ingrese el número de la opción deseada: 1
-Ingrese su consulta a chatGPT: el perro corre, el perro juega, el perro duerme.
-La consulta 'el perro corre, el perro juega, el perro duerme.' se ha codificado en [296, 96439, 14025, 11, 650, 96439, 145144, 11, 650, 96439, 116318, 1047, 13] y son 13 tokens.
-El coste de la consulta es: 0.0000325000 $ y el coste esperado de la respuesta de ChatGPT es: 0.0005000000 $
-Su consulta tiene un coste asociado de 0.0005325000 $
+Ingrese su consulta a ChatGPT: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Esta conversión ha tardado 464750 nanosegundos
+La consulta 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' se ha codificado en [61495, 38714, 25840, 2353, 36204, 11, 54472, 91785, 45688, 11, 10412, 621, 160226, 14725, 173578, 4518, 110546, 859, 79682, 78404, 151394, 13, 21952, 51474, 687, 23874, 126377, 11, 39559, 15647, 73375, 138821, 99386, 1191, 199011, 58560, 4518, 51155, 488, 513, 11235, 127896, 131925, 13, 121159, 185481, 3288, 627, 25840, 306, 147652, 306, 145757, 82872, 15368, 274, 168333, 79682, 5658, 150234, 64611, 150207, 13, 1771, 185000, 29021, 171447, 266, 118278, 55268, 2893, 440, 2477, 11, 24871, 306, 62745, 2780, 143411, 152505, 76322, 278, 5727, 1211, 893, 152097, 13] y son 87 tokens.
+El coste de la consulta es: 0.0002175000 $ y el coste esperado de la respuesta de ChatGPT es: 0.0005000000 $
+Su consulta tiene un coste asociado de 0.0007175000 $
+
 ```
 
-En esta consola podemos introducir exactamente la misma consulta de prueba con la librería de tiktoken y vamos a verificar que se sigue codificando a los mismos números enteros.
+En esta consola podemos introducir exactamente la misma consulta de prueba con la librería de tiktoken y vamos a verificar que se sigue codificando a los mismos números enteros. Además, verificamos que ha tardado 464750 nanosegundos, un resultado muy similar a los 0,442 milisegundos que hicimos de la prueba en python. 
 
 # 5. Conclusiones
 
