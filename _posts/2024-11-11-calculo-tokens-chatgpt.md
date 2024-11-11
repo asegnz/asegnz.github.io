@@ -237,11 +237,11 @@ Puedes descargarte [mi proyecto funcionando desde Github](https://github.com/ase
 Para ejecutarlo, tenemos que introducir los siguientes comandos:
 
 ```bash
-mvn compile
-mvn exec:java -Dexec.mainClass="com.ejemplo.App"
+mvn clean install
+mvn exec:java -Dexec.mainClass="com.asegnz.App"
 ```
 
-Se nos abrirá la aplicación por consola y jugaremos un poco con ella:
+Se nos abrirá la aplicación por consola y podremos utilizarla para calcular el coste de nuestras interacciones con ChatGPT:
 
 ```
 Bienvenid@ a la calculadora de tokens de modelos de OpenAI
