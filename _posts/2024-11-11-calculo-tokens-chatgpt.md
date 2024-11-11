@@ -232,7 +232,7 @@ private int numeroTokens(String consulta) {
 ```
 
 
-Puedes descargarte el proyecto funcionando desde [Github](https://github.com/asegnz/openai-tokens-calculator).
+Puedes descargarte [mi proyecto funcionando desde Github](https://github.com/asegnz/openai-tokens-calculator).
 
 Para ejecutarlo, tenemos que introducir los siguientes comandos:
 
