@@ -28,14 +28,14 @@ Los *tokens* son la unidad de facturación de OpenAI, por tanto, es bueno contro
 
 El tutorial está escrito usando el siguiente entorno:
 
-- Hardware: Apple M1 Pro 32GB 1TB SDD
-- Sistema Operativo: MacOS 15.0.1
-- Programas utilizados:
-  ** Homebrew: 4.4.4
-  ** pyenv: 2.4.17
-  ** python: 3.13
-  ** Java: 17.0.9 temurin
-  \*\* Apache Maven: 3.8.6
+* Hardware: Apple M1 Pro 32GB 1TB SDD
+* Sistema Operativo: MacOS 15.0.1
+* Programas utilizados:
+  * Homebrew: 4.4.4
+  * pyenv: 2.4.17
+  * python: 3.13
+  * Java: 17.0.9 temurin
+  * Apache Maven: 3.8.6
 
 ## 3. Biblioteca tiktoken
 
