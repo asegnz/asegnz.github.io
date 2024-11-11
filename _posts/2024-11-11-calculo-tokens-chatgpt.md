@@ -175,15 +175,19 @@ De nuevo, ejecutamos:
 
 Como se puede observar, delante de cada literal tenemos una _b_ que significa que todo texto detrás es un **bytearray**. Con un texto tan largo no podemos apreciar a simple vista cómo se traduce el texto en *tokens*. Vamos con un ejemplo más cortito:
 
+```
 El perro corre rápido y el gato corre lento.
 [4422, 96439, **14025**, 41693, 342, 650, 99767, **14025**, 120905, 13]
 [b'El', b' perro', **b' corre'**, b' r\xc3\xa1pido', b' y', b' el', b' gato', **b' corre'**, b' lento', b'.']
+```
 
 Vemos que se reutilizan las expresiones exactas como en el caso de "corre" y el propio "." tiene un *token*. Nos invita a pensar que **siempre que convirtamos texto, va a haber más tokens que palabras.** Veamos otro ejemplo:
 
+```
 el perro corre, el perro juega, el perro duerme.
 [296, 96439, 14025, 11, 650, 96439, 145144, 11, 650, 96439, 116318, 1047, 13]
 [b'el', b' perro', b' corre', b',', b' el', b' perro', b' juega', b',', b' el', b' perro', b' duer', b'me', b'.']
+```
 
 Podemos visualizar que la primera palabra de la frase (el) se codifica de forma especial (296).
 
@@ -216,7 +220,7 @@ import com.knuddels.jtokkit.api.EncodingRegistry;
 import com.knuddels.jtokkit.api.EncodingType;
 import com.knuddels.jtokkit.api.IntArrayList;
 
-...
+// (...)
 
 private int numeroTokens(String consulta) {
     EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
