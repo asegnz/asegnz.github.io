@@ -2,7 +2,7 @@ title: Blog de Alberto Segovia
 author: asegnz
 email: asegnz@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
-  Padre, Marido, Desarrollador, y ya casi nada Gamer.
+  Desarrollador y lo que surja
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
@@ -11,7 +11,7 @@ sass:
   sass_dir: _sass
 plainwhite:
   name: Alberto Segovia
-  tagline: Padre, Marido, Desarrollador, y ya casi nada Gamer.
+  tagline: Desarrollador y lo que surja
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
   search: true # set to true to enable searchbar
@@ -44,7 +44,7 @@ plainwhite:
     #   instance: example.com
     # - username: jekyll2
     #   instance: example.com
-  analytics_id: 'G-3SW7SP415X'
+  #analytics_id: 'G-3SW7SP415X'
   disqus_shortname: asegnz-blog
 
 # If you want to link only specific pages in your header, uncomment
