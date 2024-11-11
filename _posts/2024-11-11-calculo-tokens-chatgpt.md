@@ -5,9 +5,9 @@ date: "2024-11-11 00:00:00 +0100"
 categories: chatgpt tokens
 ---
 
-# Tutorial Tokens Openai
-
 En este tutorial te enseñaré un ejemplo de cómo se pueden tokenizar las consultas que hacemos a ChatGPT para que sepamos lo que nos está costando cada interacción.
+
+# Tutorial Tokens Openai
 
 ## 1. Introducción
 
