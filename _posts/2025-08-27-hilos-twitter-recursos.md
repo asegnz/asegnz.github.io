@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Hilos de Twitter y recursos públicos"
-date: "2024-08-27 11:00:00 +0200"
-categories: recursos twitter descargas
+title: "Calcula tus consultas a ChatGPT"
+date: "2024-11-11 00:00:00 +0100"
+categories: chatgpt tokens
 ---
 
 Aquí os compartiré todos mis hilos de twitter y recursos para para que podáis acceder a los mismos. 
@@ -19,3 +19,10 @@ Debido a que ya tengo unos cuantos y buscarlos cada día se hace más difícil, 
 ## 2. Hilos de Twitter
 
 1. [Hilo sobre la paternidad](https://x.com/asegnz/status/1369303402610589696)
+
+---
+layout: post
+title: "Hilos de Twitter y recursos públicos"
+date: "2024-08-27 11:00:00 +0200"
+categories: recursos twitter descargas
+---
