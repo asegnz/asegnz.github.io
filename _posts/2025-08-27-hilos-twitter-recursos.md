@@ -19,3 +19,4 @@ Debido a que ya tengo unos cuantos y buscarlos cada día se hace más difícil, 
 ## 2. Hilos de Twitter
 
 1. [Hilo sobre la paternidad](https://x.com/asegnz/status/1369303402610589696)
+2. [Hilo sobre ser presidente de la Comunidad](https://x.com/asegnz/status/1966626738969907307)
