@@ -5,6 +5,8 @@ date: "2026-08-20 00:00:00 +0200"
 categories: IA development
 ---
 
+Aquí os comparto cómo trabajo con la IA y las conclusiones a las que he llegado en estos 3 meses. 
+
 Mi manera de trabajar con la IA
 ================================
 
